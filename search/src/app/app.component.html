@@ -1,0 +1,18 @@
+<form class="ui large form segment">
+  <div class="ui action left icon input">
+    <i class="search icon"></i>
+    <input [(ngModel)]="searchText" [ngModelOptions]="{standalone: true}" placeholder="search by first and last name" >
+    <button (click)="search()" class="ui positive button">I'm lucky</button>
+  </div>
+  <div class="ui divider"></div>
+  <div class="ui segment">
+    <div><label>Search Result</label></div>
+
+    <span>{{foundEmail}}</span>
+  </div>
+
+</form>
+
+<div class="ui grid posts" *ngFor="let person of displayNames">
+      <div>{{person}}</div>
+</div>

@@ -1,0 +1,21 @@
+<div>
+  <app-search-text [search]="searchT"></app-search-text>
+  <div class="form-group ui menu">
+    <div class="ui header item">
+      <label for="search_options">Search by..</label>
+    </div>
+    <div class="dropdown item">
+      <select class="form-control" id="search_options" required  [(ngModel)]="searchOption">
+        <option *ngFor="let opt of options" [value]="opt" [selected]="opt == name ? true : null">{{opt}}</option>
+      </select>
+    </div>
+    <div class="menu">
+      <input [(ngModel)]="searchT" placeholder="search for patients"/>
+        <div class="item">
+
+          <button (click)="patientsInfo.search(searchT, searchOption)" class="ui positive button">I'm lucky</button>
+        </div>
+    </div>
+  </div>
+  <app-patient-info #patientsInfo></app-patient-info>
+</div>

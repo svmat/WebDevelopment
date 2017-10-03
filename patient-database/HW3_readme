@@ -1,0 +1,21 @@
+Sviatlana Matchenia
+10/03/2017
+CSC 436
+Homework #3:
+complexity: 6 (was interesting to folow specifications)
+APPROXIMATION OF HOURS INVESTED IN ASSIGNMENT: 6
+EXPECTED GRADE: A
+
+Link to homework problems:
+https://github.com/svmat/angularProject/patient-database
+Application intent: application displays the list of patients and allows user to search by pateient first name and assigned doctor
+
+To run:
+1. npm install
+2. npm install -g typescript //if TypeScipt need to be installed
+3. npm install -g angular-cli //to instal angular cli
+4. cd patient-database
+5. ng serve
+6. go to http://localhost:4200/
+
+

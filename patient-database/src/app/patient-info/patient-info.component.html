@@ -1,0 +1,23 @@
+<app-search-result [displayedNames]="displayedNames"></app-search-result>
+<h4>
+  Patient Info
+</h4>
+
+<table class="ui left aligned celled table">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Doctor</th>
+    <th>Profile Image</th>
+  </tr>
+  <tr *ngFor="let patient of patients">
+    <td>{{patient.firstName}}</td>
+    <td>{{patient.lastName}}</td>
+    <td>{{patient.emailAddress}}</td>
+    <td>{{patient.doctorLastName}}</td>
+    <td>
+      <img class="profile_img ui card" src="{{patient.profileImage}}">
+    </td>
+  </tr>
+</table>

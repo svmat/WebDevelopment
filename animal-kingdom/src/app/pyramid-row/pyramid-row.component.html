@@ -1,0 +1,6 @@
+<div class="pyramid row" id="row{{row.level}}">
+  <app-animal
+    *ngFor="let animal of row.animals"
+    [animal]="animal">
+  </app-animal>
+</div>

@@ -1,0 +1,40 @@
+.row{
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#row4 {
+  width: 25%;
+  margin-left:35%;
+  background-color: #cce0cc;
+}
+
+#row3 {
+  width: 40%;
+  margin-left:27%;
+  background-color: #66a266;
+}
+
+#row2 {
+   width: 55%;
+   margin-left:20%;
+   background-color: #328332;
+ }
+
+ #row1 {
+   width: 70%;
+   margin-left:13%;
+   background-color: #006400;
+ }
+
+ #row0 {
+    width: 90%;
+    margin-left:2%;
+    margin-right:2%;
+    background-color: #003300;
+  }
+

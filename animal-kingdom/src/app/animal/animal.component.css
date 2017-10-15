@@ -1,0 +1,15 @@
+.animal{
+  margin: 10px;
+  height: 100px;
+}
+
+img {
+  max-height: 85%;
+  border-radius: 50%;
+}
+
+span {
+  display: flex;
+  font-weight: bold;
+  text-align: center;
+}

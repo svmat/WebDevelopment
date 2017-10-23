@@ -1,0 +1,31 @@
+<p>
+  Wikipedia Search
+</p>
+<div class="flex-container">
+  <div class="search flex-item">
+    <div>
+      <input type="text" placeholder="search wikipedia" #searchText/>
+      <button (click)="search(searchText.value)" class="ui positive button">I'm lucky</button>
+    </div>
+  </div>
+
+  <div class="flex-item">
+
+    <div>
+      <p class="load" *ngIf="loading">Loading...</p>
+    </div>
+  </div>
+
+  <div class="flex-item">
+    <div class="results">
+      <ul>
+        <li *ngFor="let item of wikipediaService.results">{{item}}</li>
+      </ul>
+    </div>
+    <div class="results">
+      <img class="giphy_img ui card" src="{{imgUrl}}">
+    </div>
+  </div>
+</div>
+
+

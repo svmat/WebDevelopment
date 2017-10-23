@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+p {
+  position: relative;
+  top: 10%;
+  text-align: center;
+  color:#2C5463;
+  font-size: 42px;
+  font-weight: bold;
+
+}
+
+.centered {
+  position: relative;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -20%);
+  color: #2C5463;
+  font-size: 40px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-item {
+    margin: 10px;
+}

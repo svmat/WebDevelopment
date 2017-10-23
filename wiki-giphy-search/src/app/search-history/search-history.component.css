@@ -1,0 +1,17 @@
+.flex-container {
+  display: flex;
+  align-self: flex-start;
+}
+
+.flex-item{
+  color: #2C5463;
+  font-size: 40px;
+  display: block;
+
+}
+
+.timestamp {
+  font-size: 24px;
+  font-style: italic;
+  padding: 10px;
+}

@@ -8,14 +8,13 @@ export class WikiSearchService {
   results: string[];
   apiRoot: string = 'https://en.wikipedia.org/w/api.php?';
   requests: Request[] = [];
-  dt = new Date();
 
   constructor(private http: Http) {
     this.results = [];
   }
 
   search (term: string) {
-      this.requests.push(new Request(this.dt.toLocaleString(), term));
+      this.requests.push(new Request(new Date().toLocaleString(), term));
       let promise = new Promise((resolve, reject) => {
       let search = new URLSearchParams()
       search.set('action', 'opensearch');

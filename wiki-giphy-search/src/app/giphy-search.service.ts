@@ -6,7 +6,6 @@ import 'rxjs/Rx';
 export class GiphySearchService {
   apiRoot: string = 'https://api.giphy.com/v1/gifs/search?';
   apiKey: string = "vyNvev5GZhAz9oTJRnteuVsdxYvitOwQ";
-  imgUrl: string
 
   constructor(private http: Http) { }
 
@@ -22,7 +21,6 @@ export class GiphySearchService {
               .get(this.apiRoot, { search })
               .toPromise()
               .then((res) => { // Success
-                  this.imgUrl = res.json()['data'][0]['url'];
                   return res.json()['data'][0]["images"]["fixed_height_downsampled"];
                 }
               );

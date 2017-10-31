@@ -1,0 +1,18 @@
+
+
+  <li class="clearfix"  [ngClass]="{'left': !incoming, 'right': incoming}">
+  <span class="chat-img"  [ngClass]="{'pull-left': !incoming, 'pull-right': incoming}">
+                            <img src="{{message.author.profilImgUrl}}" alt="User Avatar" class="img-circle" />
+                        </span>
+    <div class="chat-body clearfix">
+      <div class="header">
+        <strong class="primary-font">{{message.author.firstName}}</strong>
+        <small class=" text-muted" [ngClass]="{'pull-right': !incoming, '': incoming}">
+        <span class="glyphicon glyphicon-time"></span>{{message.timestamp | fromNow}}</small>
+      </div>
+      <p>
+        {{message.messageText}}
+      </p>
+    </div>
+  </li>
+

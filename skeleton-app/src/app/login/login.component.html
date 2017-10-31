@@ -1,0 +1,15 @@
+
+<div class="container">
+  <h2>Login</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Username:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter username" #fUser>
+    </div>
+    <div class="form-group">
+      <label for="email">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" #fPwd>
+    </div>
+    <app-two-button [btn1]="login_btn" [btn2]="fp_btn"></app-two-button>
+  </form>
+</div>

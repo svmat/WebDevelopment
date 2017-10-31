@@ -1,0 +1,31 @@
+
+<div class="container-fluid">
+  <!-- Second navbar for categories -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar-collapse-1">
+        <div class="nav navbar-nav">
+          <a [routerLink]="['/home']">Home</a>
+          <a [routerLink]="['/settings']">Settings</a>
+          <a [routerLink]="['/dashboard']">Dashboard</a>
+
+        </div>
+        <a id="login" [routerLink]="['/login']">Sign In</a>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+  </nav><!-- /.navbar -->
+
+</div>
+<router-outlet></router-outlet>
+
+<div *ngIf="!chatForUser" id="chatcaller" class="container">
+  <a (click)="clicked($event)">
+    <span class="glyphicon glyphicon-log-in"></span>
+  </a>
+</div>
+
+<div *ngIf="chatForUser">
+  <app-chatbox (onClose)="onClose($event)"></app-chatbox>
+</div>
+

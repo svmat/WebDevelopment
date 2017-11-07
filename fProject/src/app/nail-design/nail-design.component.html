@@ -1,0 +1,23 @@
+<div class="image">
+  <img src="{{nd.imgUrl}}">
+</div>
+<div class="extra content">
+  <span>
+        <i class="heart icon"></i>
+        {{nd.votes}}
+  </span>
+  <div class="ui two buttons">
+    <div class="ui basic green button">
+      <a href (click)="voteUp($event)">
+        <i class="arrow up icon"></i>
+        upvote
+      </a>
+    </div>
+    <div class="ui basic red button">
+      <a href (click)="voteDown($event)">
+        <i class="arrow down icon"></i>
+        downvote
+      </a>
+    </div>
+  </div>
+</div>

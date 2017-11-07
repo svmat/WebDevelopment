@@ -1,0 +1,38 @@
+<div class="ui main text container">
+  <h1 class="main header">
+    Welcome {{dUsername}}
+  </h1>
+
+  <div class="ui vertical segment">
+    <h2 class="ui diving header">
+      Appointments
+    </h2>
+
+    <div *ngIf="hasAppointments">
+      <ul *ngFor="let app of appointments">
+        <li>{{app}}</li>
+      </ul>
+    </div>
+    <div *ngIf="!hasAppointments">
+      No upcoming appointments.
+    </div>
+  </div>
+
+  <div *ngIf="haslikedDesigns" class="ui vertical segment">
+    <h2 class="ui diving header">
+    Liked Nail Designs
+    </h2>
+    <div class="ui grid cards">
+      <div class="card" *ngFor="let nd of likedDesignsUrls | slice:0:4">
+        <div class="image">
+          <img src="{{nd}}">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+

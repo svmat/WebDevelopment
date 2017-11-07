@@ -1,0 +1,15 @@
+<div class="ui inverted vertical footer segment">
+  <p>
+    footer works!
+  </p>
+
+  <div *ngIf="!chatForUser" id="chatcaller" class="container">
+    <a (click)="clicked($event)">
+      <span class="glyphicon glyphicon-log-in"></span>
+    </a>
+  </div>
+
+  <div *ngIf="chatForUser">
+    <app-chatbox (onClose)="onClose($event)"></app-chatbox>
+  </div>
+</div>

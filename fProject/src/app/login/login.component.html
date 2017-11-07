@@ -1,0 +1,23 @@
+
+<div class="column" *ngIf="!user.getUserLoggedIn()">
+  <h2>Login</h2>
+  <form (submit) = loginUser($event) class="ui large form">
+    <div class="ui stacked segment">
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="user icon"></i>
+          <input type="email" class="form-control" id="email" placeholder="Enter username" #fUser>
+        </div>
+      </div>
+      <div class="field">
+        <div class="ui left icon input">
+          <i class="lock icon"></i>
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" #fPwd>
+
+        </div>
+      </div>
+      <app-two-button [btn1]="login_btn" [btn2]="fp_btn"></app-two-button>
+    </div>
+  </form>
+</div>
+

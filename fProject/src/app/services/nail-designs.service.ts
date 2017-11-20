@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { NailDesign } from './nailDesign.model';
-import { DESIGNS } from './mock-designs.model';
+import { NailDesign } from '../models/nailDesign';
+import { DESIGNS } from '../models/mock-designs';
 import { Observable } from 'rxjs';
 import * as _ from 'lodash';
 
@@ -8,11 +8,11 @@ import * as _ from 'lodash';
 @Injectable()
 export class NailDesignsService {
 
-  sortedDesigns: Observable<NailDesign[]>;
+  sortedDesigns: NailDesign[];
 
   constructor() {
     //console.log(DESIGNS);
-    this.sortedDesigns = DESIGNS.sort( (a: NailDesign) => a.votes);
+    this.sortedDesigns = DESIGNS.sort( (a: NailDesign) => a.votes).reverse();
     //console.log("After service");
    }
 

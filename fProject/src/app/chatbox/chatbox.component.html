@@ -1,3 +1,33 @@
-<p>
-  chatbox works!
-</p>
+<div class="container">
+  <div class="row form-group">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <span class="glyphicon glyphicon-comment"></span> Chat
+          <div class="btn-group pull-right">
+            <a (click)="close()">
+              <span class="glyphicon glyphicon-remove icon_close" data-id="chat_window_1">
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="panel-body body-panel msg-container-base">
+          <ul class="chat">
+            <chat-message
+              *ngFor="let message of messages | async | slice:-4"
+              [message]="message">
+            </chat-message>
+          </ul>
+        </div>
+        <div class="panel-footer clearfix">
+          <input type="text"
+                 class="chat-input form-control" rows="3" placeholder="Your message..."
+                    (keydown.enter)="onEnter($event)"
+                    [(ngModel)]="draftMessage.messageText" />
+          <span class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-xs-12" style="margin-top: 10px">
+              <button class="btn btn-warning btn-block" id="btn-chat" (click)="onEnter($event)">Send</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+

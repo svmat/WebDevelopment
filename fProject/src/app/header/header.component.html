@@ -6,13 +6,16 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="navbar-collapse-1">
         <div class="ui secondary pointing menu header">
-          <a class="item" [routerLink]="['/home']" (click)="select($event)">
+          <a class="item" [routerLink]="['/home']" routerLinkActive="active">
             <i class="home icon"></i>
           </a>
-          <a class="item" [routerLink]="['/gallery']" (click)="select($event)">Gallery</a>
-          <a class="item" [routerLink]="['/survey']" (click)="select($event)">Survey</a>
-          <a class="item" [routerLink]="['/summary']" (click)="select($event)">Summary</a>
-          <a class="active item" *ngIf="user.getUserLoggedIn()" [routerLink]="['/dashboard']" (click)="select($event)">My Profile</a>
+          <a class="item" [routerLink]="['/gallery']" routerLinkActive="active">Gallery</a>
+          <a class="item" [routerLink]="['/survey']" routerLinkActive="active">Survey</a>
+          <a class="item" [routerLink]="['/summary']" routerLinkActive="active">Summary</a>
+          <a class="item" *ngIf="auth.authenticated()" [routerLink]="['/dashboard']" routerLinkActive="active">My Profile</a>
+          <ul *ngIf="auth.authenticated()" class="nav navbar-nav navbar-right">
+            <li><a class="btn" (click)="logOut()">Logout</a></li>
+          </ul>
 
         </div>
       </div><!-- /.navbar-collapse -->

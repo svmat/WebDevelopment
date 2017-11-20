@@ -1,3 +1,7 @@
+body {
+  padding-bottom: 70px;
+}
+
 .ui.grid {
   margin: 0px;
 }

@@ -3,7 +3,10 @@
 .navbar .navbar-collapse { position: relative; }
 
 .navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 120px; padding-left: 80px; width: 100%; }
-.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
+.navbar-default {
+  background-color: rgba(248, 248, 248, 0.4);
+  border-color: none;
+}
 .navbar.navbar-inverse .nav-collapse { background-color: #222; }
 .navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
 .nav-collapse>a { float: right; }
@@ -33,4 +36,24 @@
 #chatcaller span {
   font-size: 50px;
   color: #607D8B;
+}
+
+.navbar {
+  border: none;
+}
+
+.navbar-right {
+  position: relative;
+  left: 55%;
+}
+.navbar-right {
+  border: solid 1px rgba(248, 248, 248, 0.9);
+  border-radius: 15px;
+  background-color: rgba(248, 248, 248, 0.8);
+  margin: 3px
+}
+
+.navbar-nav>li>a {
+  padding-top: none;
+  padding-bottom: none;
 }

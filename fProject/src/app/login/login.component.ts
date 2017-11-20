@@ -1,34 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
+import {AuthService} from '../services/auth-service.service';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 
 export class LoginComponent implements OnInit {
   login_btn= "Login";
   fp_btn= "Forgot Password";
-  constructor(private router: Router, private user: UserService) { }
+  error: any;
+  dbUsers: AngularFireList<any>;
+
+  constructor(private router: Router, public auth: AuthService) {
+
+   }
 
   ngOnInit() {
   }
 
-  loginUser(e) {
+  loggedIn(){
+    return this.auth.authenticated();
+  }
 
-    e.preventDefault();
-    console.log(e);
-    let username = e.target.elements[0].value;
-    let pwd = e.target.elements[1].value;
+  loginFb() {
+    this.auth.facebookLogin();
+  }
 
-    if (this.user.setUserLogIn(username, pwd)) {
-      console.log("Set user log in");
-      this.router.navigate(['dashboard']);
-      e.target.ownerDocument.activeElement.className = "item";
-    }
+  loginGoogle() {
+    this.auth.googleLogin();
   }
 
 }

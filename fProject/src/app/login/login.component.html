@@ -1,23 +1,15 @@
-
-<div class="column" *ngIf="!user.getUserLoggedIn()">
-  <h2>Login</h2>
-  <form (submit) = loginUser($event) class="ui large form">
-    <div class="ui stacked segment">
-      <div class="field">
-        <div class="ui left icon input">
-          <i class="user icon"></i>
-          <input type="email" class="form-control" id="email" placeholder="Enter username" #fUser>
+<section>
+  <ul id='login' *ngIf="!loggedIn()">
+      <h2>Login</h2>
+      <li>
+        <div (click)="loginFb()">
+          <i class="facebook icon"></i>
         </div>
-      </div>
-      <div class="field">
-        <div class="ui left icon input">
-          <i class="lock icon"></i>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" #fPwd>
-
+      </li>
+      <li>
+        <div (click)="loginGoogle()">
+          <i class="google icon"></i>
         </div>
-      </div>
-      <app-two-button [btn1]="login_btn" [btn2]="fp_btn"></app-two-button>
-    </div>
-  </form>
-</div>
-
+      </li>
+</ul>
+</section>

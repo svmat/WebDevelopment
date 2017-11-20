@@ -1,0 +1,11 @@
+#survey {
+      display: flex;
+      justify-content: center;
+}
+
+button {
+    margin: 0.5em;
+    position: relative;
+    left: 40%;
+}
+

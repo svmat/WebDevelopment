@@ -1,7 +1,7 @@
 import { QuestionBase }     from './question-base';
 import { CheckboxQuestion } from './question-checkbox';
 
-export const QUESTIONS: QuestionBase<any> = [
+export const QUESTIONS: QuestionBase<any>[] = [
   new CheckboxQuestion ({
       key: 'frequency',
       label: 'How often do you usually get your nails polished?',

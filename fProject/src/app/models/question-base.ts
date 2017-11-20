@@ -5,6 +5,9 @@ export class QuestionBase<T>{
   required: boolean;
   order: number;
   controlType: string;
+  options: {key: string, value: string}[] = [];
+  surveyResults: {key: string, vote: number}[] = [];
+  optionKeys: string[] = []
 
   constructor(options: {
         value?: T,

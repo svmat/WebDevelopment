@@ -1,3 +1,20 @@
 #home {
   margin: 2em;
 }
+
+#quote {
+  text-align: -webkit-center;
+  font-family: "Lucy";
+  font-size: 3.2em;
+  font-weight: bolder;
+  letter-spacing: .1em;
+  color: whitesmoke;
+  margin: 0.2em;
+  line-height: 1em;
+  padding-top: 1em;
+}
+
+.icon-quote {
+    font-size: 30px;
+    font-weight: bold;
+}

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { User } from './user.model';
-import { USERS } from './mock-users';
+import { User } from '../models/user';
+import { USERS } from '../models/mock-users';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
 export class UserService {
 
   private currentUser: User;
-  private users: Observable<User[]>;
+  private users: User[];
 
   constructor() {
     this.users = USERS;
@@ -25,6 +26,8 @@ export class UserService {
 
   setUserLogIn(username: string, pwd: string) {
       console.log("IN USER SERVICE SET USER LOG IN");
+      console.log(username);
+      console.log(pwd);
       let searchUser = this.users.find(user => user.username == username && user.pwd == pwd);
       if (searchUser){
           console.log("found user");

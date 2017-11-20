@@ -1,4 +1,4 @@
-import { NailDesign } from './nailDesign.model';
+import { NailDesign } from './nailDesign';
 
 export const DESIGNS: NailDesign[] = [
   new NailDesign(["moon", "pink", "spring", "summer"], "design_1.jpg"),

@@ -1,26 +1,30 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NailDesign } from './nailDesign.model';
-import { UserService } from '../user.service';
-
+import { NailDesign } from '../models/nailDesign';
+import {AuthService} from '../services/auth-service.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'nail-design',
   templateUrl: './nail-design.component.html',
   styleUrls: ['./nail-design.component.css']
 })
+
 export class NailDesignComponent implements OnInit {
   @Input() nd: NailDesign;
-  constructor(private user: UserService) { }
+  constructor(private auth: AuthService) {
+   }
 
   ngOnInit() { }
 
   voteUp(e) {
     e.preventDefault();
     this.nd.votes += 1;
-    if (this.user.getUserLoggedIn()){
-        if (!this.user.currentUser.liked_designs.includes(this.nd.imgUrl)){
-          this.user.currentUser.liked_designs.push(this.nd.imgUrl);
-        }
+    console.log("INTO VOTING");
+    if (this.auth.authenticated()){
+      var userId = this.auth.currentUserId();
+      var updates = {};
+      updates[this.nd.id] = this.nd.imgUrl;
+      firebase.database().ref('savedDesigns/' + userId).update(updates);
     }
   }
 

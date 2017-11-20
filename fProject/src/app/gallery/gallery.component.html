@@ -1,4 +1,12 @@
+<form class="ui large form segment">
+  <div class="ui action left icon input">
+    <i class="search icon"></i>
+    <input type="text" placeholder="search by hashtag" (keydown.enter)="searchDesign(designTag)" #designTag>
+    <button (click)="searchDesign(designTag)" class="ui positive button">Search</button>
+  </div>
+  <div class="ui divider"></div>
 
+</form>
 <div class="ui grid four cards">
   <nail-design id="design" class="card"
     *ngFor="let nailD of nailDesigns" [nd]="nailD">

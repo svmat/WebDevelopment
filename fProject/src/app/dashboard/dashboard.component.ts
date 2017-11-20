@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
+import {AuthService} from '../services/auth-service.service';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,32 +13,44 @@ import { Observable } from 'rxjs';
 })
 export class DashboardComponent implements OnInit {
   dUsername: string;
+  designsCollection: AngularFireList<Date>;
+  appointments: String[];
+  savedDesigns: String[];
   hasAppointments: boolean;
-  haslikedDesigns: boolean;
-  appointments: Observable<Date[]>;
-  likedDesignsUrls: Observable<String[]>;
+  hassavedDesigns: boolean;
 
-  constructor(private user: UserService) {
-    this.dUsername = this.user.currentUser.username;
+  constructor(private auth: AuthService, private db: AngularFireDatabase, private router: Router) {
 
-    if (this.user.currentUser.appointments.length > 0){
-      this.hasAppointments = true;
-      this.appointments = this.user.currentUser.appointments;
-    } else {
-      this.hasAppointments = false;
-      this.appointments = [];
-    }
-
-    if (this.user.currentUser.liked_designs.length > 0){
-      this.haslikedDesigns = true;
-      this.likedDesignsUrls = this.user.currentUser.liked_designs;
-    } else {
-      this.haslikedDesigns = false;
-      this.likedDesignsUrls = [];
+    console.log("Dashboard Constructor");
+    if (this.auth.authenticated()) {
+      var userId = firebase.auth().currentUser.uid;
+      firebase.database().ref('/users/' + userId).once('value').then(snapshot => {
+        if (snapshot.val() ) {
+          console.log(snapshot.val());
+          this.dUsername = snapshot.val().username || 'Anonymous';
+          this.appointments = snapshot.val().appointments || [];
+          if (this.appointments.length > 0){
+            this.hasAppointments = true;
+          }
+        }
+      });
+      firebase.database().ref('savedDesigns/' + userId).once('value').then( snapshot => {
+        if (snapshot.val() ) {
+          console.log(snapshot.val());
+          this.savedDesigns = Object.values(snapshot.val());
+          console.log(this.savedDesigns);
+          this.hassavedDesigns = true;
+        }
+      });
     }
   }
 
   ngOnInit() {
+  }
+
+  logOut() {
+    console.log("LogOut btn clicked");
+    this.auth.signOut();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import {AuthService} from '../services/auth-service.service';
 
 
 @Component({
@@ -9,25 +9,14 @@ import { UserService } from '../user.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private user: UserService) { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  select(e){
-    e.preventDefault();
-    console.log(e);
-    let childNodes = e.target.parentElement.getElementsByClassName('item');
-    var count = childNodes.length;
-    for(var i=0;i<count;i++){
-      childNodes[i].className = "item";
-    }
-    if (e.target.tagName == "I"){
-      //icon
-      e.target.parentElement.className = 'active item';
-    } else {
-      e.target.className = 'active item';
-    }
+  logOut() {
+    console.log("LogOut btn clicked");
+    this.auth.signOut();
   }
 
 }

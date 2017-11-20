@@ -13,26 +13,43 @@ import { HomeComponent } from './home/home.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { SurveyComponent } from './survey/survey.component';
 import { ChatboxComponent } from './chatbox/chatbox.component';
-import { TwoButtonComponent } from './two-button/two-button.component';
 import { NailDesignComponent } from './nail-design/nail-design.component';
 import { QuestionComponent } from './question/question.component';
-
-import { UserService } from './user.service';
-import {NailDesignsService } from './nail-design/nail-designs.service';
-import { AuthguardGuard} from'./authguard.guard';
-import {QuestionControlService } from './question/question-control.service';
 import { SummaryComponent } from './summary/summary.component';
+import { ChatMessageComponent } from './chat-message/chat-message.component';
 
+import { UserService } from './services/user.service';
+import {NailDesignsService } from './services/nail-designs.service';
+import { AuthguardGuard} from'./services/authguard.guard';
+import {QuestionControlService } from './services/question-control.service';
+import { AuthService} from './services/auth-service.service';
+import {MessagingService} from "./services/messaging.service";
+import { AuthorsService } from './services/authors.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+
+import { FromNowPipe } from './pipes/from-now.pipe';
 
 const routes: Routes = [
 { path: '', redirectTo: 'home', pathMatch: 'full' },
 { path: 'home',  component: HomeComponent },
 { path: 'survey', component: SurveyComponent },
-{ path: 'dashboard',   component: DashboardComponent, canActivate[ AuthguardGuard ]},
-{ path: 'gallery',     component: GalleryComponent },
-{ path: 'summary',     component: SummaryComponent },
+{ path: 'dashboard', component: DashboardComponent},
+{ path: 'gallery', component: GalleryComponent },
+{ path: 'summary', component: SummaryComponent },
 {path: '**', redirectTo: 'home'}
 ];
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyB2AvwgpQxfbYX4AC7JOevxp1K1AtwSprA",
+  authDomain: "nailstherapy-24027.firebaseapp.com",
+  databaseURL: "https://nailstherapy-24027.firebaseio.com",
+  projectId: "nailstherapy-24027",
+  storageBucket: "nailstherapy-24027.appspot.com",
+  messagingSenderId: "255093687173"
+};
 
 
 @NgModule({
@@ -46,19 +63,23 @@ const routes: Routes = [
     GalleryComponent,
     SurveyComponent,
     ChatboxComponent,
-    TwoButtonComponent,
     NailDesignComponent,
     QuestionComponent,
-    SummaryComponent
+    SummaryComponent,
+    ChatMessageComponent,
+    FromNowPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [UserService, NailDesignsService, AuthguardGuard, QuestionControlService],
+  providers: [MessagingService, NailDesignsService, AuthguardGuard, QuestionControlService, AuthService, AuthorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

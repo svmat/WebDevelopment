@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { NailDesign } from '../nailDesign.model';
-import { NailDesignsService } from '../nail-design/nail-designs.service';
+import { NailDesign } from '../models/nailDesign';
+import { NailDesignsService } from '..//services/nail-designs.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -9,23 +9,22 @@ import { Observable } from 'rxjs';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  nailDesigns: Observable<any>;
+  nailDesigns: NailDesign[];
   constructor(public designService: NailDesignsService) {
-      this.nailDesigns = designService.sortedDesigns;
-      console.log("GALLERY");
-      console.log(this.nailDesigns);
+      this.nailDesigns = this.designService.sortedDesigns;
    }
 
   ngOnInit() {
 
   }
 
-  sortedDesigns(): NailDesign[] {
-    console.log("IN SORTED");
-    let nds = this.nailDesigns.sort((a: NailDesign) => a.votes).reverse();
-    //console.log("After sort");
-    //console.log(nds);
-    return nds;
+  searchDesign(tag?: HTMLInputElement): void {
+      console.log("Search for Design with tag: ", tag.value);
+      if (tag.value) {
+        this.nailDesigns = this.designService.sortedDesigns.filter(nd => { return nd.tags.includes(tag.value); });
+      } else {
+        this.nailDesigns = this.designService.sortedDesigns;
+      }
   }
 
 }

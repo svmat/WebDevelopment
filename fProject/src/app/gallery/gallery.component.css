@@ -1,8 +1,18 @@
 #design {
   width: calc(25% - 4em);
   margin-left: 2em;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .cards {
   margin: 2em;
+}
+
+.form {
+  background-color: transparent;
+}
+
+.input {
+    position: relative;
+    left: 35%;
 }

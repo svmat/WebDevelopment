@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import {AuthService} from '../services/auth-service.service';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';

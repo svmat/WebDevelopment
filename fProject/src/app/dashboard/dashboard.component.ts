@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
@@ -6,12 +6,17 @@ import {AuthService} from '../services/auth-service.service';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
+import { DialogAnchorDirective } from '../dialoganchor.directive';
+import {AppointmentRequestComponent} from '../appointment-request/appointment-request.component';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  entryComponents: [AppointmentRequestComponent]
 })
 export class DashboardComponent implements OnInit {
+  @ViewChild(DialogAnchorDirective) dialogAnchor: DialogAnchorDirective;
   dUsername: string;
   designsCollection: AngularFireList<Date>;
   appointments: String[];
@@ -48,9 +53,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  logOut() {
-    console.log("LogOut btn clicked");
-    this.auth.signOut();
+  openDialogBox(e) {
+    console.log(e);
+    this.dialogAnchor.createDialog(AppointmentRequestComponent);
+    //jQuery('#myModal').modal('show');
   }
 
 }

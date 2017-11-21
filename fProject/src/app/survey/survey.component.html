@@ -1,5 +1,5 @@
 <div class="ui middle aligned divided list" id="survey">
-  <div class="ui segments">
+  <div *ngIf="!submitted" class="ui segments">
     <div class="ui segment">
       <h3>Please, select options from dropdowns</h3>
     </div>
@@ -15,5 +15,8 @@
         </div>
       </form>
     </div>
+  </div>
+  <div *ngIf="submitted" id="thank">
+    Thank you!
   </div>
 </div>

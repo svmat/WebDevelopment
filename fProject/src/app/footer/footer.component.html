@@ -1,14 +1,13 @@
 <div class="navbar navbar-fixed-bottom">
-  <p>
-  </p>
+  <div *ngIf="auth.authenticated()">
+    <div *ngIf="!chatForUser" id="chatcaller" class="container">
+      <a (click)="clicked($event)">
+        <i class="comments icon"></i>
+      </a>
+    </div>
 
-  <div *ngIf="!chatForUser" id="chatcaller" class="container">
-    <a (click)="clicked($event)">
-      <i class="comments icon"></i>
-    </a>
-  </div>
-
-  <div *ngIf="chatForUser">
-    <app-chatbox (onClose)="onClose($event)"></app-chatbox>
+    <div *ngIf="chatForUser">
+      <app-chatbox (onClose)="onClose($event)"></app-chatbox>
+    </div>
   </div>
 </div>

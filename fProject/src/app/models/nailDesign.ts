@@ -2,6 +2,17 @@ import { uuid } from '../util/uuid';
 /**
 * Represents Nail Design picture and description
 */
+export class nailDesignBase {
+  tags: string[];
+  imgUrl: string;
+  votes: number;
+
+  constructor(tags: string[], imgUrl: string, votes:number) {
+    this.votes = votes;
+    this.tags = tags;
+    this.imgUrl = imgUrl;
+  }
+}
 
 export class NailDesign {
   votes: number;
@@ -10,12 +21,12 @@ export class NailDesign {
   id: string;
   defaultImgPath: string;
 
-constructor(tags?: string[], imgUrl?: string) {
+constructor(tags?: string[], imgUrl?: string, votes?: number, id?: string) {
     this.defaultImgPath = "../../assets/images/";
-    this.votes = 0;
+    this.votes = votes || 0;
     this.tags = tags;
-    this.imgUrl = this.defaultImgPath + imgUrl;
-    this.id = uuid();
+    this.imgUrl = imgUrl || this.defaultImgPath;
+    this.id = id || uuid();
   }
 
 

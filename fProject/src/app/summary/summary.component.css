@@ -1,7 +1,19 @@
 .container {
   text-align: -webkit-center;
+
 }
 
 .text {
-      color: snow;
+  color: snow;
+  background-color: rgba(255, 255, 255, 0.4);
+
+}
+
+#summary {
+  font-family: fantasy;
+  margin-top: 5%;
+}
+
+.header {
+  padding-top: 10px;
 }

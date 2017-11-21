@@ -1,0 +1,23 @@
+<div class="dialog" id="appRequest">
+  <form lass="ui form" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="inputName" class="control-label">Name</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Your name" [(ngModel)]="request.name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="inputEmail" class="control-label">Email</label>
+      <input type="text" class="form-control" id="inputEmail" placeholder="Your contact email"  [(ngModel)]="request.email" name="email">
+
+    </div>
+
+    <div class="form-group">
+      <label for="inputMessage" class="control-label">Your Message</label>
+      <textarea type="text" class="form-control" id="inputMessage" placeholder="Your message"  [(ngModel)]="request.message" name="message"></textarea>
+
+    </div>
+
+    <div class="form-group">
+      <button class="ui right floated button">Send</button>
+    </div>
+  </form>
+</div>

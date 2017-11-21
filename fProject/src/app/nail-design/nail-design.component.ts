@@ -14,23 +14,34 @@ export class NailDesignComponent implements OnInit {
   constructor(private auth: AuthService) {
    }
 
-  ngOnInit() { }
+  ngOnInit() {
+    firebase.database().ref('nailDesigns/' + this.nd.id + '/votes').once('value').then(
+      snap => {
+      this.nd.votes = snap.val() || 0;
+      });
+   }
 
   voteUp(e) {
     e.preventDefault();
+    debugger;
     this.nd.votes += 1;
-    console.log("INTO VOTING");
     if (this.auth.authenticated()){
       var userId = this.auth.currentUserId();
       var updates = {};
       updates[this.nd.id] = this.nd.imgUrl;
       firebase.database().ref('savedDesigns/' + userId).update(updates);
     }
+    var ndUpdate = {};
+    ndUpdate['votes'] = this.nd.votes;
+    firebase.database().ref('nailDesigns/' + this.nd.id).update(ndUpdate);
   }
 
   voteDown(e) {
     e.preventDefault();
     this.nd.votes -= 1;
+    var ndUpdate = {};
+    ndUpdate['votes'] = this.nd.votes;
+    firebase.database().ref('nailDesigns/' + this.nd.id).update(ndUpdate);
   }
 
 }

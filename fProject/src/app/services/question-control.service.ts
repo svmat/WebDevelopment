@@ -153,7 +153,6 @@ export class QuestionControlService {
       // Write the new survey data simultaneously
       var updates = {};
       updates['/surveyResults'] = q.surveyResults;
-
       return firebase.database().ref('questions/' + qKey).update(updates);
     }
 

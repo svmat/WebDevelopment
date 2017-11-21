@@ -1,3 +1,4 @@
+
 <div class="ui main text container">
   <h1 class="main header">
     Welcome {{dUsername}}
@@ -16,6 +17,10 @@
     <div *ngIf="!hasAppointments">
       No upcoming appointments.
     </div>
+    <div>
+      <button class="ui button" (click)='openDialogBox($event)'>Request Appointment</button>
+      <div dialogAnchor></div>
+    </div>
   </div>
 
   <div *ngIf="hassavedDesigns">
@@ -23,7 +28,7 @@
     Liked Nail Designs
     </h2>
     <div class="ui grid cards">
-      <div class="card" *ngFor="let nd of savedDesigns | slice:0:4">
+      <div class="small card" *ngFor="let nd of savedDesigns | slice:0:4">
         <div class="image">
           <img src="{{nd}}">
         </div>

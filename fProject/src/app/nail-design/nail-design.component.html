@@ -6,18 +6,10 @@
         <i class="heart icon"></i>
         {{nd.votes}}
   </span>
-  <div class="ui two buttons">
-    <div class="ui basic green button">
-      <a href (click)="voteUp($event)">
-        <i class="arrow up icon"></i>
-        like
-      </a>
+    <div (click)="voteUp($event)" class="ui basic right floated green button">
+        <i class="thumbs outline up icon"></i>
     </div>
-    <div class="ui basic red button">
-      <a href (click)="voteDown($event)">
-        <i class="arrow down icon"></i>
-        dislike
-      </a>
+    <div (click)="voteDown($event)" class="ui basic right floated red button">
+        <i class="thumbs outline down icon"></i>
     </div>
-  </div>
 </div>

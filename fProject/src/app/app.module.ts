@@ -17,10 +17,9 @@ import { NailDesignComponent } from './nail-design/nail-design.component';
 import { QuestionComponent } from './question/question.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ChatMessageComponent } from './chat-message/chat-message.component';
+import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
+import { DialogAnchorDirective } from './dialoganchor.directive';
 
-import { UserService } from './services/user.service';
-import {NailDesignsService } from './services/nail-designs.service';
-import { AuthguardGuard} from'./services/authguard.guard';
 import {QuestionControlService } from './services/question-control.service';
 import { AuthService} from './services/auth-service.service';
 import {MessagingService} from "./services/messaging.service";
@@ -31,6 +30,7 @@ import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 import { FromNowPipe } from './pipes/from-now.pipe';
+
 
 const routes: Routes = [
 { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -67,7 +67,9 @@ export const firebaseConfig = {
     QuestionComponent,
     SummaryComponent,
     ChatMessageComponent,
-    FromNowPipe
+    FromNowPipe,
+    AppointmentRequestComponent,
+    DialogAnchorDirective
   ],
   imports: [
     BrowserModule,
@@ -79,7 +81,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [MessagingService, NailDesignsService, AuthguardGuard, QuestionControlService, AuthService, AuthorsService],
+  providers: [MessagingService, QuestionControlService, AuthService, AuthorsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

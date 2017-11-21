@@ -9,3 +9,19 @@ button {
     left: 40%;
 }
 
+#thank {
+  text-align: -webkit-center;
+  font-family: "Lucy";
+  font-size: 5em;
+  font-weight: bolder;
+  letter-spacing: .1em;
+  color: whitesmoke;
+  margin-top: 2em;
+  line-height: 1em;
+  padding-top: 1em;
+}
+
+.ui.segment {
+  background-color: rgba(255,255,255, .8);
+}
+

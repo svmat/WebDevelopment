@@ -1,0 +1,12 @@
+#appRequest {
+  background-color: rgba(255,255,255, 0.4);
+}
+
+.form-group {
+  margin: 10px 5px;
+  padding: 10px 5px;
+}
+
+.button {
+  margin-top: 20px;
+}

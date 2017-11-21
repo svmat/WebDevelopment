@@ -16,6 +16,7 @@ export class SurveyComponent implements OnInit {
   form: FormGroup;
   payLoad = '';
   questions: QuestionBase<any>[];
+  submitted = false;
 
   constructor(private qcs: QuestionControlService, private router: Router) {
       console.log("Survey CONSTRUCTOR");
@@ -39,6 +40,7 @@ export class SurveyComponent implements OnInit {
         this.qcs.updateQuestionStatistics(key, value);
       }
     });
+    this.submitted = true;
   }
 
 }

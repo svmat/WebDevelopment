@@ -7,8 +7,8 @@
   <div class="ui divider"></div>
 
 </form>
-<div class="ui grid four cards">
+<div class="ui grid four cards" id="gallery">
   <nail-design id="design" class="card"
-    *ngFor="let nailD of nailDesigns" [nd]="nailD">
+    *ngFor="let nailD of taggedDesigns" [nd]="nailD">
   </nail-design>
 </div>

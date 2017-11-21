@@ -19,7 +19,6 @@ export class MessagingService {
   newMessages: Subject<Message> = new Subject<Message>();
 
   messages: Observable<Message[]> = new Observable<Message[]>();
-  msgs: Subject<Message[]> = new Subject<Message[]>();
 
   // `updates` receives _operations_ to be applied to messages
   // it's a way we can perform changes on *all* messages
@@ -61,7 +60,6 @@ export class MessagingService {
 
 
     this.newMessages.subscribe(this.create);
-    //this.messages.subscribe(this.msgs);
 
     this.messagesWithAuthorStream = this.messages.combineLatest(
       this.authorService.authorMapStream.valueChanges(), (messages: Message[], authorMap: Map<string, Author>) => {

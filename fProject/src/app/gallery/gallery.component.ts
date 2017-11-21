@@ -1,7 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NailDesign } from '../models/nailDesign';
-import { NailDesignsService } from '..//services/nail-designs.service';
+import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-gallery',
@@ -9,21 +10,32 @@ import { Observable } from 'rxjs';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  nailDesigns: NailDesign[];
-  constructor(public designService: NailDesignsService) {
-      this.nailDesigns = this.designService.sortedDesigns;
+  nailDesigns: NailDesign[] = [];
+  readonly nailDesignsPath = "nailDesigns";
+  taggedDesigns: NailDesign[] = [];
+
+  constructor(private db: AngularFireDatabase) {
    }
 
   ngOnInit() {
+    firebase.database().ref('nailDesigns').once('value').then(
+      snap => {
+        console.log(snap.val());
+        for (const [key, value] of Object.entries(snap.val())) {
+          var nd = new NailDesign(value.tags, value.imgUrl, value.votes, key);
+          this.taggedDesigns.push(nd);
+        }
+      });
+    this.nailDesigns = this.taggedDesigns;
 
   }
 
   searchDesign(tag?: HTMLInputElement): void {
       console.log("Search for Design with tag: ", tag.value);
       if (tag.value) {
-        this.nailDesigns = this.designService.sortedDesigns.filter(nd => { return nd.tags.includes(tag.value); });
+        this.taggedDesigns = this.nailDesigns.filter(nd => { return nd.tags.includes(tag.value); });
       } else {
-        this.nailDesigns = this.designService.sortedDesigns;
+        this.taggedDesigns = this.nailDesigns;
       }
   }
 

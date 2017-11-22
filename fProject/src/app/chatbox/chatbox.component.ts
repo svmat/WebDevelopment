@@ -47,7 +47,6 @@ export class ChatboxComponent implements OnInit {
 
   onEnter(event: any): void {
     console.log("Envoked on Enter");
-    console.log(this.draftMessage);
     this.sendMessage();
     event.preventDefault();
   }

@@ -25,13 +25,10 @@ export class DashboardComponent implements OnInit {
   hassavedDesigns: boolean;
 
   constructor(private auth: AuthService, private db: AngularFireDatabase, private router: Router) {
-
-    console.log("Dashboard Constructor");
     if (this.auth.authenticated()) {
       var userId = firebase.auth().currentUser.uid;
       firebase.database().ref('/users/' + userId).once('value').then(snapshot => {
         if (snapshot.val() ) {
-          console.log(snapshot.val());
           this.dUsername = snapshot.val().username || 'Anonymous';
           this.appointments = snapshot.val().appointments || [];
           if (this.appointments.length > 0){
@@ -41,9 +38,7 @@ export class DashboardComponent implements OnInit {
       });
       firebase.database().ref('savedDesigns/' + userId).once('value').then( snapshot => {
         if (snapshot.val() ) {
-          console.log(snapshot.val());
           this.savedDesigns = Object.values(snapshot.val());
-          console.log(this.savedDesigns);
           this.hassavedDesigns = true;
         }
       });
@@ -54,9 +49,8 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialogBox(e) {
-    console.log(e);
+    console.log("Open form for requesting appointment");
     this.dialogAnchor.createDialog(AppointmentRequestComponent);
-    //jQuery('#myModal').modal('show');
   }
 
 }

@@ -23,7 +23,6 @@ export class NailDesignComponent implements OnInit {
 
   voteUp(e) {
     e.preventDefault();
-    debugger;
     this.nd.votes += 1;
     if (this.auth.authenticated()){
       var userId = this.auth.currentUserId();

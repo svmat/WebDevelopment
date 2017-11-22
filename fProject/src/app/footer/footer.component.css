@@ -9,3 +9,7 @@
   font-size: 50px;
   color: azure;
 }
+
+.navbar-fixed-bottom {
+  z-index: -1;
+}

@@ -3,7 +3,6 @@ import { Subject, BehaviorSubject, Observable } from 'rxjs';
 import { Message } from "../models/message";
 import { Author } from "../models/author";
 import { MessageWithAuthor } from "../models/message";
-import { MESSAGES } from "../models/mock-messages";
 import { AuthorsService } from'./authors.service';
 
 const initialMessages: MessageWithAuthor[] = [];

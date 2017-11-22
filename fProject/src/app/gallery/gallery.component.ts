@@ -20,7 +20,6 @@ export class GalleryComponent implements OnInit {
   ngOnInit() {
     firebase.database().ref('nailDesigns').once('value').then(
       snap => {
-        console.log(snap.val());
         for (const [key, value] of Object.entries(snap.val())) {
           var nd = new NailDesign(value.tags, value.imgUrl, value.votes, key);
           this.taggedDesigns.push(nd);

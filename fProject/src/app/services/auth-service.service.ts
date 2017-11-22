@@ -18,7 +18,6 @@ export class AuthService {
 
     this.afAuth.authState.subscribe((auth) => {
       this.authState = auth;
-      console.log(auth);
     });
 
     this.db.object('user').snapshotChanges().map(action => {
@@ -52,12 +51,7 @@ export class AuthService {
   // Returns current user from firebase
   currentUserDB(): any {
     var userId = this.currentUserId();
-    return this.database.ref('/users/' + userId).once('value').then(snapshot => {
-      if (snapshot.val() ) {
-        console.log(snapshot.val());
-        }
-      return snapshot.val();
-      });
+    return this.database.ref('/users/' + userId).once('value').then(snapshot => {return snapshot.val();});
   }
 
   // Anonymous User
@@ -107,7 +101,7 @@ export class AuthService {
           var user = credential.user;
           debugger;
           this.writeUserData(user.uid, user.displayName, user.email, user.photoURL, "password");
-          console.log("Push the user to database", user);
+          console.log("Push the user to database");
           this.authorsService.updateUser(user.uid, user.displayName, user.photoURL);
           this.router.navigate(['dashboard'])
       })

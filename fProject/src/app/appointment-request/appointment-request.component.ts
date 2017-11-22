@@ -25,8 +25,6 @@ export class AppointmentRequestComponent implements OnInit {
     }
 
   onSubmit() {
-    debugger;
-    console.log(this.request);
     this.onClickedExit();
   }
 

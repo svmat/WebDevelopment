@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AuthService} from '../services/auth-service.service';
 import { AngularFireDatabaseModule, AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
+declare let gtag: Function;
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   error: any;
   dbUsers: AngularFireList<any>;
 
-  constructor(private router: Router, public auth: AuthService) {
+  constructor(private router: Router, public auth: AuthService, public gas: GoogleAnalyticsService) {
 
    }
 
@@ -29,10 +31,13 @@ export class LoginComponent implements OnInit {
 
   loginFb() {
     this.auth.facebookLogin();
+    this.gas.sendEvent('login', 'csc436', 'authorized Facebook');
   }
 
   loginGoogle() {
     this.auth.googleLogin();
+    this.gas.sendEvent('login', 'csc436', 'authorized Google');
+
   }
 
 }

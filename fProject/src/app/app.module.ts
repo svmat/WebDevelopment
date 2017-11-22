@@ -24,6 +24,7 @@ import {QuestionControlService } from './services/question-control.service';
 import { AuthService} from './services/auth-service.service';
 import {MessagingService} from "./services/messaging.service";
 import { AuthorsService } from './services/authors.service';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
@@ -81,7 +82,7 @@ export const firebaseConfig = {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [MessagingService, QuestionControlService, AuthService, AuthorsService],
+  providers: [MessagingService, QuestionControlService, AuthService, AuthorsService, GoogleAnalyticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

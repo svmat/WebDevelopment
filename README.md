@@ -1,7 +1,7 @@
 # Dynamic Web Development
 
 Motivation:
-Create web site using popular frameworks and tools in modern web development such as:
+Create web application using popular frameworks and tools in modern web development such as:
 1. Angular
 2. HTML5 
 3. JavaScript/TypeScript 
